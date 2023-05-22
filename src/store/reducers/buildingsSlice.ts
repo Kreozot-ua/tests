@@ -44,8 +44,8 @@ export const buildingsSlice = createSlice({
       delete state[buildingId];
     },
     setBuildingParams: (state, { payload: { buildingId, floors, elevatorsQuantity } }: PayloadAction<any>) => {
-      state[buildingId].floors = floors;
-      state[buildingId].elevators = Array(elevatorsQuantity).fill(initialElevatorProps);
+      state[buildingId].floors = Math.min(16, Math.max(3, Math.abs(floors)));
+      state[buildingId].elevators = Array(Math.min(3, Math.max(1, Math.abs(elevatorsQuantity)))).fill(initialElevatorProps);
     },
     callElevator: (state, { payload: { buildingId, elevatorId, floor } }: PayloadAction<any>) => {
       state[buildingId].floorsCalled.push(floor);
