@@ -11,8 +11,11 @@ export const useStyles = makeStyles()(({ spacing }) => ({
     position: 'relative'
   },
 
-  button: {
+  buttons: {
     position: 'fixed',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: spacing(1),
     top: 64 + parseInt(spacing(1)),
     right: spacing(2)
   }

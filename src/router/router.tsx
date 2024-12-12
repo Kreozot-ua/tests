@@ -8,6 +8,7 @@ export const routes = [
   {
     path: Routes.ELEVATORS,
     title: 'Elevators',
+    description: '',
     element: <Elevators />,
   },
 ]
@@ -23,4 +24,6 @@ export const router = createBrowserRouter([
       ...routes
     ]
   },
-]);
+], {
+  basename: '/tests'
+});

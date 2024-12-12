@@ -2,6 +2,7 @@
   "name": "new_test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kreozot-ua.github.io/tests",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -26,6 +27,7 @@
     "react-app-rewire-alias": "^1.1.7",
     "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
@@ -35,11 +37,16 @@
     "unstated-next": "^1.1.0",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@types/react-helmet": "^6.1.11",
+    "gh-pages": "^6.2.0"
+  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "test": "react-app-rewired test --verbose",
+    "eject": "react-app-rewired eject",
+    "deploy": "gh-pages -d build"
   },
   "prettier": {
     "singleQuote": true,

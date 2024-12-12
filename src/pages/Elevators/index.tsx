@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { Fab } from '@mui/material';
-import { Add } from '@mui/icons-material';
+import { Helmet } from 'react-helmet';
+import { Fab, Tooltip } from '@mui/material';
+import { Add, Info } from '@mui/icons-material';
 
-import { Building } from '~components/core';
+import { Building, ElevatorsInfo } from '~components/core';
 import { useAppDispatch, useAppSelector } from '~store/hooks';
 import { addBuilding, removeBuilding } from '~store/actions/buildingsActions';
 import { buildingsSelector } from '~store/selectors/buildingsSelectors';
@@ -20,18 +21,30 @@ export default function Elevators() {
   const handleRemoveBuilding = (id: number) => dispatch(removeBuilding({ buildingId: id }));
 
   return (
-    <div className={classes.root}>
-      {Object.keys(buildings).map((id) => (
-        <Building
-          key={id}
-          buildingId={Number(id)}
-          onRemove={handleRemoveBuilding}
-          buildingsQuantity={Object.keys(buildings).length}
-        />
-      ))}
-      <Fab className={classes.button} disabled={Object.keys(buildings).length > 2} onClick={handleAddBuilding}>
-        <Add />
-      </Fab>
-    </div>
+    <>
+      <Helmet>
+        <title>Elevators</title>
+      </Helmet>
+      <div className={classes.root}>
+        {Object.keys(buildings).map((id) => (
+          <Building
+            key={id}
+            buildingId={Number(id)}
+            onRemove={handleRemoveBuilding}
+            buildingsQuantity={Object.keys(buildings).length}
+          />
+        ))}
+        <div className={classes.buttons}>
+          <Tooltip title={<ElevatorsInfo />}>
+            <Fab>
+              <Info />
+            </Fab>
+          </Tooltip>
+          <Fab disabled={Object.keys(buildings).length > 2} onClick={handleAddBuilding}>
+            <Add />
+          </Fab>
+        </div>
+      </div>
+    </>
   )
 }
