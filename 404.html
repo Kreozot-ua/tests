@@ -7,7 +7,9 @@
 </head>
 <body>
 <script>
-  window.location.replace(window.location.origin);
+  const pathname = window.location.pathname.replace('/tests', '');
+  const redirectTo = `${window.location.origin}/tests/index.html?redirect=${pathname}`;
+  window.location.replace(redirectTo);
 </script>
 </body>
 </html>
